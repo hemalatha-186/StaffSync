@@ -18,12 +18,12 @@ const {
 router.post(
     '/',
     protect,
-    authorizeRoles('Employee'),
+    authorizeRoles('HR', 'Manager', 'Employee'),
     markAttendance
 );
 
 router.patch('/checkout', protect,
-     authorizeRoles('Employee'),
+     authorizeRoles('HR', 'Manager', 'Employee'),
      checkOutAttendance);
 
 // View attendance records
@@ -37,7 +37,7 @@ router.get(
 router.get(
     '/user/:userId',
     protect,
-    authorizeRoles('HR', 'Manager'),
+    authorizeRoles('HR'),
     getAttendanceByUser
 );
 

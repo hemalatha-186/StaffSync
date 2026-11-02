@@ -49,9 +49,9 @@ const getAttendance = async (req, res) => {
         const filter = {};
 
         // Employees can see only their own records
-        if (req.user.role === 'Employee') {
+        
             filter.user = req.user._id;
-        }
+        
 
         const records = await Attendance.find(filter)
             .populate('user', 'name email department')
